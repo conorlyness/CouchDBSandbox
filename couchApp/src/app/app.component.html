@@ -1,0 +1,141 @@
+<h1 class="title">CouchDB App</h1>
+
+<div class="couchList">
+  <p class="title">current couchDB databases</p>
+  <ng-container *ngFor="let databases of dbList">
+    <p class="databaseName">{{ databases }}</p>
+  </ng-container>
+  <button (click)="fetchDbList()">Fetch databases</button>
+</div>
+
+<div class="createDB">
+  <p class="title">create a new db</p>
+
+  <mat-form-field>
+    <mat-label>DB Name</mat-label>
+    <input type="text" matInput [formControl]="dbName" placeholder="Name..." />
+  </mat-form-field>
+
+  <button
+    class="createBtn"
+    [disabled]="dbName.value.length < 3"
+    (click)="createDB()"
+  >
+    Create
+  </button>
+</div>
+
+<div class="detailsForm">
+  <p class="title">Add your details</p>
+
+  <mat-form-field>
+    <mat-label>Fvourite Colour</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="favColour"
+      placeholder="fav Colour..."
+    />
+    <mat-error *ngIf="favColour.hasError('required')">
+      Favourite colour is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Number of Pets</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="noOfPets"
+      placeholder="how many pets..."
+    />
+    <mat-error *ngIf="noOfPets.hasError('required')">
+      Number of pets is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>car Manufacturer</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="carManufacturer"
+      placeholder="car make..."
+    />
+    <mat-error *ngIf="carManufacturer.hasError('required')">
+      car make is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Age</mat-label>
+    <input type="text" matInput [formControl]="age" placeholder="age..." />
+
+    <mat-error *ngIf="age.hasError('required')">
+      age is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Wears glasses</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="wearsGlasses"
+      placeholder="yes/no..."
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Gamer</mat-label>
+    <input type="text" matInput [formControl]="gamer" placeholder="yes/no..." />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Favourite Football Team</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="footballTeam"
+      placeholder="Manchester United..."
+    />
+  </mat-form-field>
+
+  <!-- <input #colour type="text" name="" id="" placeholder="favourite colour" />
+  <input #pets type="text" name="" id="" placeholder="number of pets" />
+  <input #car type="text" placeholder="car manufacturer" />
+  <input #age type="text" placeholder="age" /> -->
+  <button
+    (click)="addToCouch()"
+    [disabled]="
+      !favColour.value ||
+      !noOfPets.value ||
+      !carManufacturer.value ||
+      !age.value
+    "
+  >
+    Add info to db
+  </button>
+  <!-- <button (click)="addMoreToCouchThanUsual()">
+    add more info that these 4 inputs to table
+  </button> -->
+</div>
+
+<div class="userDefinedDetails">
+  <p class="title">Users details</p>
+  <p>Favourite Colour: {{ colour || "N/A" }}</p>
+  <p>Number of pets: {{ pets || "N/A" }}</p>
+  <p>Car Manufacturer: {{ car || "N/A" }}</p>
+  <p>Age: {{ personsAge || "N/A" }}</p>
+  <p>Wears glasses: {{ glasses || "N/A" }}</p>
+  <p>Is a gamer: {{ isGamer || "N/A" }}</p>
+  <p>Favourite football team: {{ footy || "N/A" }}</p>
+</div>
+
+<div class="data">
+  <button class="getUserData" (click)="getFromCouch()">get user details</button>
+  <p *ngIf="results.length > 0">data retrieved from couch:</p>
+  <ng-container *ngFor="let data of results">
+    <p>{{ data.property }} : {{ data.value }}</p>
+  </ng-container>
+</div>

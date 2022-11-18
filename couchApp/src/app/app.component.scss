@@ -1,0 +1,50 @@
+.data {
+  display: inline-grid;
+  margin-left: 10px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  padding: 10px;
+}
+
+.detailsForm {
+  display: inline-grid;
+  margin: 0 auto;
+  width: 400px;
+  padding-bottom: 30px;
+  margin-top: 30px;
+  margin-left: 30px;
+  padding: 20px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+
+.userDefinedDetails {
+  display: inline-grid;
+  margin-left: 30px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  padding: 10px;
+}
+
+.couchList {
+  text-align: center;
+  padding: 20px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+
+.createDB {
+  text-align: center;
+  padding: 20px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+
+.title {
+  font-weight: bolder;
+  text-align: center;
+}
+
+.createBtn {
+  margin: 0 auto;
+  display: block;
+}
+
+button {
+  font-weight: 200;
+}
